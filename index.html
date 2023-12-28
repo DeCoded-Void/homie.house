@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="Homie House" />
+    <meta property="og:description" content="(now with a website stand!)"/>
+    <meta property="og:image" content="https://homie.house/bean.png" />
+    <meta name="theme-color" content="#692F1C">
+    <meta name="msapplication-navbutton-color" content="#692F1C">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#692F1C">	
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homie House</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        #get-beaned {
+            position: absolute;
+            width: 10%;
+        }
+
+        #get-beaned img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="get-beaned">
+        <img src="bean.png" alt="Bean Logo">
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const beangusBinkus = document.getElementById('get-beaned');
+            let x = 0, y = 0;
+            let xSpeed = 2, ySpeed = 2;
+
+            function animate() {
+                x += xSpeed;
+                y += ySpeed;
+
+                if (x + beangusBinkus.clientWidth >= window.innerWidth || x <= 0) {
+                    xSpeed *= -1;
+                }
+                if (y + beangusBinkus.clientHeight >= window.innerHeight || y <= 0) {
+                    ySpeed *= -1;
+                }
+
+                beangusBinkus.style.left = x + 'px';
+                beangusBinkus.style.top = y + 'px';
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        });
+    </script>
+</body>
+</html>
